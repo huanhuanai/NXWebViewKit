@@ -1,6 +1,6 @@
 PODS:
   - MBProgressHUD (1.0.0)
-  - NXWebViewKit (1):
+  - NXWebViewKit (2):
     - MBProgressHUD
 
 DEPENDENCIES:
@@ -12,7 +12,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
-  NXWebViewKit: 2b4611df87d7b84b87fc355c0e8edf49a658dc05
+  NXWebViewKit: 75e44b9966144a799cadafc55afdfec240dfb80b
 
 PODFILE CHECKSUM: cca5564170bd44b1db1df834852a9037c19dcf89
 

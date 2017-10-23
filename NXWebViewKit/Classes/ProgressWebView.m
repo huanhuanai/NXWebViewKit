@@ -8,7 +8,6 @@
 
 #import "ProgressWebView.h"
 #import <WebKit/WebKit.h>
-
 #import "UIView+NXAdd.h"
 
 @interface ProgressWebView ()<WKNavigationDelegate>
