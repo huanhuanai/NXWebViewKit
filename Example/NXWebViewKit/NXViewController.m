@@ -8,7 +8,12 @@
 
 #import "NXViewController.h"
 
+#import "LoadingWebViewFactory.h"
+#import "AlertWebViewFactory.h"
+
 @interface NXViewController ()
+
+@property (nonatomic, strong) WebView *webView;
 
 @end
 
@@ -19,6 +24,26 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 }
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    
+    [self.view addSubview:self.webView];
+}
+
+- (WebView *)webView {
+    if (_webView == nil) {
+        
+        NSDictionary *params = @{
+                                 WebViewUrl:@"https://www.baidu.com",
+                                 WebViewTopTip:@"关于",
+                                 WebViewBottomTip:@"我知道了"
+                                 };
+        
+        _webView = [AlertWebViewFactory createWebViewWithFrame:self.view.frame params:params];
+    }
+    return _webView;
+}
+
 
 - (void)didReceiveMemoryWarning
 {

@@ -1,0 +1,32 @@
+{
+  "name": "NXWebViewKit",
+  "version": "1",
+  "summary": "A short description of NXWebViewKit.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/NXTeamKit/NXWebViewKit",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "kepuna": "yomingyo@gmail.com"
+  },
+  "source": {
+    "git": "https://github.com/NXTeamKit/NXWebViewKit.git",
+    "tag": "1"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "NXWebViewKit/Classes/**/*",
+  "resource_bundles": {
+    "NXWebViewKit": [
+      "NXWebViewKit/Assets/*.png"
+    ]
+  },
+  "dependencies": {
+    "MBProgressHUD": [
+
+    ]
+  }
+}

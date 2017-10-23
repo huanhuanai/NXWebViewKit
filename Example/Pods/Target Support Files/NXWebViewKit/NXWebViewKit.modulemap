@@ -1,0 +1,6 @@
+framework module NXWebViewKit {
+  umbrella header "NXWebViewKit-umbrella.h"
+
+  export *
+  module * { export * }
+}
