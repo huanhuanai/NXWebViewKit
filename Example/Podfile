@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'NXWebViewKit_Example' do
+  pod 'NXWebViewKit', :path => '../'
+
+  target 'NXWebViewKit_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
