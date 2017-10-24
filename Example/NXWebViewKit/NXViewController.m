@@ -35,7 +35,9 @@
         NSDictionary *params = @{
                                  WebViewUrl:@"https://www.baidu.com",
                                  WebViewTopTip:@"关于",
-                                 WebViewBottomTip:@"我知道了"
+                                 WebViewBottomTip:@"我知道了",
+                                 WebViewBottomBtnBackgroundColor:[UIColor redColor],
+                                 WebViewTopTipViewBackgroundColor:[UIColor yellowColor]
                                  };
         
         _webView = [AlertWebViewFactory createWebViewWithFrame:self.view.frame params:params];

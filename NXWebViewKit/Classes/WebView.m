@@ -11,6 +11,8 @@
 NSString * const WebViewUrl = @"WebViewUrl";
 NSString * const WebViewTopTip = @"WebViewTopTip";
 NSString * const WebViewBottomTip = @"WebViewBottomTip";
+NSString * const WebViewTopTipViewBackgroundColor = @"WebViewTopTipViewBackgroundColor";
+NSString * const WebViewBottomBtnBackgroundColor = @"WebViewBottomBtnBackgroundColor";
 
 @implementation WebView
 

@@ -38,6 +38,8 @@ CGFloat const NXAlertWebViewLeftMargin = 15;
 @property (nonatomic, strong) UIButton *bottomBtn;
 @property (nonatomic, copy) NSString *topTip;
 @property (nonatomic, copy) NSString *bottomTip;
+@property (nonatomic, strong) UIColor *tipViewBackgrondColor;
+@property (nonatomic, strong) UIColor *bottomBtnColor;
 
 @end
 
@@ -48,6 +50,8 @@ CGFloat const NXAlertWebViewLeftMargin = 15;
     
         [[UIApplication sharedApplication].keyWindow addSubview:self];
         self.backgroundColor = [UIColor colorWithRed:(0)/255.0 green:(0)/255.0 blue:(0)/255.0 alpha:0.6];
+        self.tipViewBackgrondColor = params[WebViewTopTipViewBackgroundColor] ? params[WebViewTopTipViewBackgroundColor] : kTipViewBackgrondColor;
+        self.bottomBtnColor = params[WebViewBottomBtnBackgroundColor] ? params[WebViewBottomBtnBackgroundColor] : kBottomBtnColor;
         self.topTip = params[WebViewTopTip];
         self.bottomTip = params[WebViewBottomTip];
     
@@ -60,7 +64,7 @@ CGFloat const NXAlertWebViewLeftMargin = 15;
         [self.backView addSubview:self.webView];
         [self.backView addSubview:self.bottomLineView];
         
-        
+
         if (params[WebViewUrl]) {
             NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:params[WebViewUrl]]];
             [self.webView loadRequest:request];
@@ -124,7 +128,7 @@ CGFloat const NXAlertWebViewLeftMargin = 15;
     if (_tipLabel == nil) {
         CGRect frame = CGRectMake(0, 0, self.topTipView.width, self.topTipView.height);
         _tipLabel = [[UILabel alloc]initWithFrame:frame];
-        _tipLabel.backgroundColor = kTipViewBackgrondColor;
+        _tipLabel.backgroundColor = self.tipViewBackgrondColor;
         _tipLabel.textColor = kTipViewTextColor;
         _tipLabel.font = [UIFont systemFontOfSize:18 * kScale];
         _tipLabel.textAlignment = NSTextAlignmentCenter;
@@ -165,7 +169,7 @@ CGFloat const NXAlertWebViewLeftMargin = 15;
         [_bottomBtn setTitle:self.bottomTip forState:UIControlStateNormal];
         [_bottomBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         _bottomBtn.titleLabel.font = [UIFont systemFontOfSize:16.0 * kScale];
-        _bottomBtn.backgroundColor = kBottomBtnColor;
+        _bottomBtn.backgroundColor = self.bottomBtnColor;
         [_bottomBtn setCorner:UIRectCornerBottomLeft | UIRectCornerBottomRight cornerSize:CGSizeMake(5 * kScale, 5 * kScale)];
         [_bottomBtn addTarget:self action:@selector(s_remove) forControlEvents:UIControlEventTouchUpInside];
     }
