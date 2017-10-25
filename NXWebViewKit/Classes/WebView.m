@@ -18,7 +18,7 @@ NSString * const WebViewBottomBtnBackgroundColor = @"WebViewBottomBtnBackgroundC
 
 - (instancetype)initWithFrame:(CGRect)frame params:(NSDictionary *)params {
     if (self = [super initWithFrame:frame]) {
-        self.webViewFrame = frame;
+        self.webViewFrame = CGRectMake(0, 0, frame.size.width, frame.size.height);
         self.params = params;
     }
     return self;

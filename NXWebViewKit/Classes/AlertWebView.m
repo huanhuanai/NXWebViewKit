@@ -48,7 +48,6 @@ CGFloat const NXAlertWebViewLeftMargin = 15;
 - (instancetype)initWithFrame:(CGRect)frame params:(NSDictionary *)params {
     if (self = [super initWithFrame:frame params:params]) {
     
-        [[UIApplication sharedApplication].keyWindow addSubview:self];
         self.backgroundColor = [UIColor colorWithRed:(0)/255.0 green:(0)/255.0 blue:(0)/255.0 alpha:0.6];
         self.tipViewBackgrondColor = params[WebViewTopTipViewBackgroundColor] ? params[WebViewTopTipViewBackgroundColor] : kTipViewBackgrondColor;
         self.bottomBtnColor = params[WebViewBottomBtnBackgroundColor] ? params[WebViewBottomBtnBackgroundColor] : kBottomBtnColor;
@@ -78,7 +77,7 @@ CGFloat const NXAlertWebViewLeftMargin = 15;
 }
 
 - (void)s_remove {
-    [ self removeFromSuperview];
+    [self removeFromSuperview];
 }
 
 #pragma mark - navigationDelegate

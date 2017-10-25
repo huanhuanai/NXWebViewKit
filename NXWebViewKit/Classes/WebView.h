@@ -12,8 +12,6 @@ FOUNDATION_EXTERN NSString * const WebViewUrl;
 FOUNDATION_EXTERN NSString * const WebViewTopTip;
 FOUNDATION_EXTERN NSString * const WebViewBottomTip;
 FOUNDATION_EXTERN NSString * const WebViewTopTip;
-
-
 FOUNDATION_EXTERN NSString * const WebViewTopTipViewBackgroundColor;
 FOUNDATION_EXTERN NSString * const WebViewBottomBtnBackgroundColor;
 
