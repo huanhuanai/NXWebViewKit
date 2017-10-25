@@ -9,6 +9,7 @@
 #import "NXViewController.h"
 #import "LoadingWebViewFactory.h"
 #import "AlertWebViewFactory.h"
+#import "ProgressWebViewFactory.h"
 
 @interface NXViewController ()
 
@@ -26,7 +27,17 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     
-    [self.view addSubview:self.webView];
+//    [self.view addSubview:self.webView];
+    
+    NSMutableDictionary *params = [NSMutableDictionary dictionary];
+    [params setValue:@"https://www.baidu.com" forKey:WebViewUrl];
+    [params setValue:@"关于" forKey:WebViewTopTip];
+    [params setValue:@"我知道了" forKey:WebViewBottomTip];
+    [params setValue:[UIColor redColor] forKey:WebViewTopTipViewBackgroundColor];
+    [params setValue:[UIColor yellowColor] forKey:WebViewBottomBtnBackgroundColor];
+    
+    WebView *webView = [ProgressWebViewFactory createWebViewWithFrame:self.view.frame params:params.copy];
+    [self.view addSubview:webView];
 }
 
 - (WebView *)webView {
@@ -36,11 +47,11 @@
                                  WebViewUrl:@"https://www.baidu.com",
                                  WebViewTopTip:@"关于",
                                  WebViewBottomTip:@"我知道了",
-                                 WebViewBottomBtnBackgroundColor:[UIColor redColor],
-                                 WebViewTopTipViewBackgroundColor:[UIColor yellowColor]
+//                                 WebViewBottomBtnBackgroundColor:[UIColor redColor],
+//                                 WebViewTopTipViewBackgroundColor:[UIColor yellowColor]
                                  };
         
-        _webView = [AlertWebViewFactory createWebViewWithFrame:self.view.frame params:params];
+        _webView = [LoadingWebViewFactory createWebViewWithFrame:self.view.frame params:params];
     }
     return _webView;
 }

@@ -12,9 +12,7 @@
 @implementation LoadingWebViewFactory
 
 + (WebView *)createWebViewWithFrame:(CGRect)frame params:(NSDictionary *)params {
-    
      return [[LoadingWebView alloc] initWithFrame:frame params:params];
 }
-
 
 @end
