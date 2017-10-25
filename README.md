@@ -24,7 +24,7 @@ pod 'NXWebViewKit'
 
 **该组件**中有三种类型的`webView（ProgressWebView、LoadingWebView、AlertWebView）`。
 
-![ProgressWebView 进度条类型](http://upload-images.jianshu.io/upload_images/2470124-85cf707e272aebe3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![ProgressWebView 进度条类型](./webviewprogress.png)
 
 ```
  NSMutableDictionary *params = [NSMutableDictionary dictionary];
@@ -35,7 +35,7 @@ pod 'NXWebViewKit'
 
 ```
 
-![LoadingWebView 加载提示符类型](http://upload-images.jianshu.io/upload_images/2470124-9f6c699eb7102463.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![LoadingWebView 加载提示符类型](./webviewloading.png)
 
 ```
  NSMutableDictionary *params = [NSMutableDictionary dictionary];
@@ -47,7 +47,7 @@ pod 'NXWebViewKit'
 ```
 
 
-![AlertWebView 弹框类型](http://upload-images.jianshu.io/upload_images/2470124-4c9b7fd41d5cbf92.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![AlertWebView 弹框类型](./webviewalert.png)
 
 ```
 NSMutableDictionary *params = [NSMutableDictionary dictionary];
