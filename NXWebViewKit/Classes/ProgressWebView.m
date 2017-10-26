@@ -32,11 +32,7 @@
     return self;
 }
 
-#pragma mark - WKWebView代理
-- (void)webViewWebContentProcessDidTerminate:(WKWebView *)webView {
-    [webView reload];
-}
-
+#pragma mark - handle event
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
     if ([keyPath isEqualToString:@"estimatedProgress"]) {
         self.progressView.progress = self.webView.estimatedProgress;
@@ -54,6 +50,11 @@
     }
 }
 
+#pragma mark - navigationDelegate
+- (void)webViewWebContentProcessDidTerminate:(WKWebView *)webView {
+    [webView reload];
+}
+
 #pragma mark - getters
 - (UIProgressView *)progressView {
     if (_progressView == nil) {
@@ -67,7 +68,6 @@
 }
 
 - (void)dealloc {
-    
     [self.webView removeObserver:self forKeyPath:@"estimatedProgress"];
 }
 

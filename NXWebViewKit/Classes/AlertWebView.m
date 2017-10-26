@@ -44,6 +44,7 @@ CGFloat const NXAlertWebViewLeftMargin = 15;
 
 @implementation AlertWebView
 
+#pragma mark - init config
 - (instancetype)initWithFrame:(CGRect)frame params:(NSDictionary *)params {
     if (self = [super initWithFrame:frame params:params]) {
     
@@ -75,6 +76,7 @@ CGFloat const NXAlertWebViewLeftMargin = 15;
     return self;
 }
 
+#pragma mark - handle event
 - (void)s_remove {
     [self removeFromSuperview];
 }
@@ -98,7 +100,6 @@ CGFloat const NXAlertWebViewLeftMargin = 15;
     NSLog(@"%s 加载失败",__func__);
     [MBProgressHUD hideHUDForView:self animated:YES];
 }
-
 
 #pragma mark - getters
 - (UIView *)backView {

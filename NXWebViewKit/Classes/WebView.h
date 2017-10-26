@@ -33,6 +33,6 @@ FOUNDATION_EXTERN NSString * const WebViewInteractionNames; //JS交互的Key（�
 
 @protocol WebViewDelegate <NSObject>
 
-- (void)webView:(WebView *)webView didReceiveScriptMessageBody:(id)body;
+- (void)webView:(WebView *)webView didReceiveScriptMessageBody:(id)body scriptMessageName:(NSString *)name;
 
 @end

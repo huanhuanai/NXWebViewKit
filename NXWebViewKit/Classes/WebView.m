@@ -24,6 +24,7 @@ NSString * const WebViewInteractionNames = @"WebViewInteractionNames";
 
 @implementation WebView
 
+#pragma  init config 
 - (instancetype)initWithFrame:(CGRect)frame params:(NSDictionary *)params {
     if (self = [super initWithFrame:frame]) {
         self.webViewFrame = CGRectMake(0, 0, frame.size.width, frame.size.height);
@@ -31,14 +32,13 @@ NSString * const WebViewInteractionNames = @"WebViewInteractionNames";
         
         if (params[WebViewInteractionNames]) {
            self.interactionNames = params[WebViewInteractionNames];
-            for (NSString *name in self.interactionNames) {
-                [self.webView.configuration.userContentController addScriptMessageHandler:self name:name];
-            }
+           [self p_addScriptMessageNames];
         }
     }
     return self;
 }
 
+#pragma mark - handle event
 - (void)requestWithUrl:(NSString *)url {
     
     NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
@@ -46,9 +46,25 @@ NSString * const WebViewInteractionNames = @"WebViewInteractionNames";
 }
 
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
-    if ([self.delegate respondsToSelector:@selector(webView:didReceiveScriptMessageBody:)]) {
-        [self.delegate webView:self didReceiveScriptMessageBody:message.body];
+    if ([self.delegate respondsToSelector:@selector(webView:didReceiveScriptMessageBody: scriptMessageName:)]) {
+        [self.delegate webView:self didReceiveScriptMessageBody:message.body scriptMessageName:message.name];
     }
+}
+
+#pragma mark - privete method
+- (void)p_addScriptMessageNames{
+    
+    for (NSString *name in self.interactionNames) {
+        [self.webView.configuration.userContentController addScriptMessageHandler:self name:name];
+    }
+}
+
+- (void)p_removeScriptMessageNames{
+    
+    for (NSString *name in self.interactionNames) {
+        [self.webView.configuration.userContentController removeScriptMessageHandlerForName:name];
+    }
+    
 }
 
 #pragma mark - getters
@@ -65,6 +81,7 @@ NSString * const WebViewInteractionNames = @"WebViewInteractionNames";
 
 - (void)dealloc {
     [self.webView setNavigationDelegate:nil];
+    [self p_removeScriptMessageNames];
 }
 
 
