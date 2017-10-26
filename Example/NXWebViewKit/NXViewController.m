@@ -25,51 +25,21 @@
     
     
     NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setValue:@"http://www.jianshu.com/p/631a6a278a68" forKey:WebViewUrl];
-    [params setValue:@"关于" forKey:WebViewTopTip];
-    [params setValue:@"我知道了" forKey:WebViewBottomTip];
+    [params setObject:@"http://ncfh5.limingjie.top/index.php?r=view/detail&mid=4412" forKey:WebViewUrl];
+    [params setObject:@"关于" forKey:WebViewTopTip];
+    [params setObject:@"我知道了" forKey:WebViewBottomTip];
+    [params setObject:@[@"jumpToUserIndex",@"topicList"] forKey:WebViewInteractionNames];
     //    [params setValue:[UIColor redColor] forKey:WebViewTopTipViewBackgroundColor];
     //    [params setValue:[UIColor yellowColor] forKey:WebViewBottomBtnBackgroundColor];
+
     
-    CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height - 64);
+    CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     
-    WebView *webView = [AlertWebViewFactory createWebViewWithFrame:frame params:params.copy];
+    WebView *webView = [ProgressWebViewFactory createWebViewWithFrame:frame params:params.copy];
     [self.view addSubview:webView];
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
-//- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
-//    
-////    [self.view addSubview:self.webView];
-//    
-//    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-//    [params setValue:@"http://www.jianshu.com/p/631a6a278a68" forKey:WebViewUrl];
-//    [params setValue:@"关于" forKey:WebViewTopTip];
-//    [params setValue:@"我知道了" forKey:WebViewBottomTip];
-////    [params setValue:[UIColor redColor] forKey:WebViewTopTipViewBackgroundColor];
-////    [params setValue:[UIColor yellowColor] forKey:WebViewBottomBtnBackgroundColor];
-//    
-//    CGRect frame = CGRectMake(0, 64, self.view.frame.size.width, self.view.frame.size.height - 64);
-//    
-//    WebView *webView = [AlertWebViewFactory createWebViewWithFrame:frame params:params.copy];
-//    [self.view addSubview:webView];
-//}
-
-//- (WebView *)webView {
-//    if (_webView == nil) {
-//        
-//        NSDictionary *params = @{
-//                                 WebViewUrl:@"https://www.baidu.com",
-//                                 WebViewTopTip:@"关于",
-//                                 WebViewBottomTip:@"我知道了",
-////                                 WebViewBottomBtnBackgroundColor:[UIColor redColor],
-////                                 WebViewTopTipViewBackgroundColor:[UIColor yellowColor]
-//                                 };
-//        
-//        _webView = [LoadingWebViewFactory createWebViewWithFrame:self.view.frame params:params];
-//    }
-//    return _webView;
-//}
 
 
 - (void)didReceiveMemoryWarning

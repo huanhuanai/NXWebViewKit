@@ -7,38 +7,20 @@
 //
 
 #import "LoadingWebView.h"
-#import <WebKit/WebKit.h>
 #import "MBProgressHUD.h"
 
-@interface LoadingWebView ()<WKNavigationDelegate>
-
-@property (nonatomic, strong) WKWebView *webView;
-
-@end
 
 @implementation LoadingWebView
 
 - (instancetype)initWithFrame:(CGRect)frame params:(NSDictionary *)params {
     if (self = [super initWithFrame:frame params:params]) {
-        [self addSubview:self.webView];
         
+        [self addSubview:self.webView];
         if (params[WebViewUrl]) {
-            NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:params[WebViewUrl]]];
-            [self.webView loadRequest:request];
+            [self requestWithUrl:params[WebViewUrl]];
         }
     }
     return self;
-}
-
-- (WKWebView *)webView {
-    if (_webView == nil) {
-        WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
-        _webView = [[WKWebView alloc] initWithFrame:self.webViewFrame configuration:config];
-        _webView.opaque = NO;
-        _webView.backgroundColor = [UIColor whiteColor];
-        _webView.navigationDelegate = self;
-    }
-    return _webView;
 }
 
 #pragma mark - navigationDelegate

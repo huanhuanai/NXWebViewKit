@@ -28,7 +28,6 @@ CGFloat const NXAlertWebViewLeftMargin = 15;
 
 @interface AlertWebView ()
 
-@property (nonatomic, strong) WKWebView *webView;
 @property (nonatomic, strong) UIView *backView;
 @property (nonatomic, strong) UIView *topTipView;
 @property (nonatomic, strong) UIView *topLineView;
@@ -60,13 +59,13 @@ CGFloat const NXAlertWebViewLeftMargin = 15;
         [self.topTipView addSubview:self.closeBtn];
         [self.topTipView addSubview:self.topLineView];
         [self.backView addSubview:self.bottomBtn];
-        [self.backView addSubview:self.webView];
         [self.backView addSubview:self.bottomLineView];
         
-
+        self.webViewFrame = CGRectMake(0, self.topTipView.height, self.backView.width, self.backView.height - self.topTipView.height - self.bottomBtn.height - self.bottomLineView.height);
+        [self.backView addSubview:self.webView];
+        
         if (params[WebViewUrl]) {
-            NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:params[WebViewUrl]]];
-            [self.webView loadRequest:request];
+            [self requestWithUrl:params[WebViewUrl]];
         }
         
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(s_remove)];
@@ -182,15 +181,6 @@ CGFloat const NXAlertWebViewLeftMargin = 15;
         _bottomLineView.backgroundColor = kLineColor;
     }
     return _bottomLineView;
-}
-
-- (WKWebView *)webView {
-    if (_webView == nil) {
-        _webView = [[WKWebView alloc]initWithFrame:CGRectMake(0, self.topTipView.height, self.backView.width, self.backView.height - self.topTipView.height - self.bottomBtn.height - self.bottomLineView.height)];
-        _webView.backgroundColor = [UIColor whiteColor];
-        _webView.navigationDelegate = self;
-    }
-    return _webView;
 }
 
 @end

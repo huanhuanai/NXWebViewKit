@@ -7,12 +7,10 @@
 //
 
 #import "ProgressWebView.h"
-#import <WebKit/WebKit.h>
 #import "UIView+NXAdd.h"
 
 @interface ProgressWebView ()<WKNavigationDelegate>
 
-@property (nonatomic, strong) WKWebView *webView;
 @property (nonatomic, strong) UIProgressView *progressView;
 
 @end
@@ -24,12 +22,12 @@
         
         [self addSubview:self.webView];
         [self addSubview:self.progressView];
-    
+        
         if (params[WebViewUrl]) {
-            NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:params[WebViewUrl]]];
-            [self.webView loadRequest:request];
+            [self requestWithUrl:params[WebViewUrl]];
         }
 
+        [self.webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
     }
     return self;
 }
@@ -56,19 +54,7 @@
     }
 }
 
-
-- (WKWebView *)webView {
-    if (_webView == nil) {
-        WKWebViewConfiguration *config = [[WKWebViewConfiguration alloc] init];
-        _webView = [[WKWebView alloc] initWithFrame:self.webViewFrame configuration:config];
-        _webView.opaque = NO;
-        _webView.backgroundColor = [UIColor whiteColor];
-        _webView.navigationDelegate = self;
-        [_webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
-    }
-    return _webView;
-}
-
+#pragma mark - getters
 - (UIProgressView *)progressView {
     if (_progressView == nil) {
         CGRect frame = CGRectMake(0, 0, self.width, 1.5);
@@ -81,8 +67,8 @@
 }
 
 - (void)dealloc {
+    
     [self.webView removeObserver:self forKeyPath:@"estimatedProgress"];
-    [self.webView setNavigationDelegate:nil];
 }
 
 @end
