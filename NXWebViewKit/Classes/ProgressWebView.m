@@ -20,13 +20,9 @@
 - (instancetype)initWithFrame:(CGRect)frame params:(NSDictionary *)params {
     if (self = [super initWithFrame:frame params:params]) {
         
-        [self addSubview:self.webView];
         [self addSubview:self.progressView];
-        [self addScriptMessageNames];
-        
-        if (params[WebViewUrl]) {
-            [self requestWithUrl:params[WebViewUrl]];
-        }
+        [self addSubview:self.webView];
+        [self.webView loadRequest:self.urlRequest];
         [self.webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
     }
     return self;

@@ -8,17 +8,18 @@
 
 #import "WebView.h"
 
-
 NSString * const WebViewUrl = @"WebViewUrl";
 NSString * const WebViewTopTip = @"WebViewTopTip";
 NSString * const WebViewBottomTip = @"WebViewBottomTip";
 NSString * const WebViewTopTipViewBackgroundColor = @"WebViewTopTipViewBackgroundColor";
 NSString * const WebViewBottomBtnBackgroundColor = @"WebViewBottomBtnBackgroundColor";
-NSString * const WebViewScriptMessageNames = @"WebViewScriptMessageNames";
 
 @interface WebView ()<WKScriptMessageHandler>
 
 @property (nonatomic, copy) NSArray *scriptMessageNames;
+@property (nonatomic, strong, readwrite) WKWebView *webView;
+@property (nonatomic, assign, readwrite) CGRect webViewFrame;
+@property (nonatomic, strong, readwrite) NSURLRequest *urlRequest;
 
 @end
 
@@ -28,42 +29,38 @@ NSString * const WebViewScriptMessageNames = @"WebViewScriptMessageNames";
 - (instancetype)initWithFrame:(CGRect)frame params:(NSDictionary *)params {
     if (self = [super initWithFrame:frame]) {
         self.webViewFrame = CGRectMake(0, 0, frame.size.width, frame.size.height);
-        self.params = params;
-        if (params[WebViewScriptMessageNames]) {
-           self.scriptMessageNames = params[WebViewScriptMessageNames];
-        }
+        ;
+        self.urlRequest = [NSURLRequest requestWithURL:[NSURL URLWithString:params[WebViewUrl]]];
     }
     return self;
 }
 
 #pragma mark - handle event
-- (void)requestWithUrl:(NSString *)url {
-    
-    NSURLRequest *request = [[NSURLRequest alloc] initWithURL:[NSURL URLWithString:url]];
-    [self.webView loadRequest:request];
-}
-
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message {
     if ([self.delegate respondsToSelector:@selector(webView:didReceiveScriptMessageBody: scriptMessageName:)]) {
         [self.delegate webView:self didReceiveScriptMessageBody:message.body scriptMessageName:message.name];
     }
 }
 
-#pragma mark - privete method
-- (void)addScriptMessageNames{
-    if (self.scriptMessageNames) {
-        for (NSString *name in self.scriptMessageNames) {
+- (void)addScriptMessageNames:(NSArray *)names {
+    self.scriptMessageNames = names;
+    if (names) {
+        for (NSString *name in names) {
             [self.webView.configuration.userContentController addScriptMessageHandler:self name:name];
         }
     }
 }
 
-- (void)removeScriptMessageNames{
+- (void)removeScriptMessageNames {
     if (self.scriptMessageNames) {
         for (NSString *name in self.scriptMessageNames) {
             [self.webView.configuration.userContentController removeScriptMessageHandlerForName:name];
         }
     }
+}
+
+- (void)reload {
+    [self.webView reload];
 }
 
 #pragma mark - getters
@@ -79,6 +76,7 @@ NSString * const WebViewScriptMessageNames = @"WebViewScriptMessageNames";
 }
 
 - (void)dealloc {
+    NSLog(@"#### %s 销毁 ####",__func__);
     [self.webView setNavigationDelegate:nil];
     [self removeScriptMessageNames];
 }

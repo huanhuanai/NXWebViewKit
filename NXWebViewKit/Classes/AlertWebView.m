@@ -39,6 +39,7 @@ CGFloat const NXAlertWebViewLeftMargin = 15;
 @property (nonatomic, copy) NSString *bottomTip;
 @property (nonatomic, strong) UIColor *tipViewBackgrondColor;
 @property (nonatomic, strong) UIColor *bottomBtnColor;
+@property (nonatomic, assign, readwrite) CGRect webViewFrame;
 
 @end
 
@@ -64,12 +65,8 @@ CGFloat const NXAlertWebViewLeftMargin = 15;
         
         self.webViewFrame = CGRectMake(0, self.topTipView.height, self.backView.width, self.backView.height - self.topTipView.height - self.bottomBtn.height - self.bottomLineView.height);
         [self.backView addSubview:self.webView];
-        [self addScriptMessageNames];
-
-        if (params[WebViewUrl]) {
-            [self requestWithUrl:params[WebViewUrl]];
-        }
-        
+        [self.webView loadRequest:self.urlRequest];
+   
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(s_remove)];
         [self addGestureRecognizer:tap];
         

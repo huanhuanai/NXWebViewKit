@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'NXWebViewKit'
-  s.version          = '8'
+  s.version          = '9'
   s.summary          = 'A short description of NXWebViewKit.'
 
 # This description is used to generate tags and improve search results.

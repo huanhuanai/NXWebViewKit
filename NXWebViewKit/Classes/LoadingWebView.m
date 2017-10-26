@@ -14,12 +14,8 @@
 
 - (instancetype)initWithFrame:(CGRect)frame params:(NSDictionary *)params {
     if (self = [super initWithFrame:frame params:params]) {
-        
         [self addSubview:self.webView];
-        [self addScriptMessageNames];
-        if (params[WebViewUrl]) {
-            [self requestWithUrl:params[WebViewUrl]];
-        }
+        [self.webView loadRequest:self.urlRequest];
     }
     return self;
 }
