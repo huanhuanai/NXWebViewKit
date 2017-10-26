@@ -64,7 +64,8 @@ CGFloat const NXAlertWebViewLeftMargin = 15;
         
         self.webViewFrame = CGRectMake(0, self.topTipView.height, self.backView.width, self.backView.height - self.topTipView.height - self.bottomBtn.height - self.bottomLineView.height);
         [self.backView addSubview:self.webView];
-        
+        [self addScriptMessageNames];
+
         if (params[WebViewUrl]) {
             [self requestWithUrl:params[WebViewUrl]];
         }

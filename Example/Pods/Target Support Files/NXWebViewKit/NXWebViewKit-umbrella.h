@@ -20,6 +20,7 @@
 #import "UIView+NXAdd.h"
 #import "WebView.h"
 #import "WebViewFactory.h"
+#import "WebViewFactoryProtocol.h"
 
 FOUNDATION_EXPORT double NXWebViewKitVersionNumber;
 FOUNDATION_EXPORT const unsigned char NXWebViewKitVersionString[];

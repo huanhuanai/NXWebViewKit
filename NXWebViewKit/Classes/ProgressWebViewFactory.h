@@ -6,9 +6,10 @@
 //
 //
 
-#import "WebViewFactory.h"
+#import <Foundation/Foundation.h>
+#import "WebViewFactoryProtocol.h"
 
-@interface ProgressWebViewFactory : WebViewFactory
+@interface ProgressWebViewFactory : NSObject <WebViewFactoryProtocol>
 
 
 @end

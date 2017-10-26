@@ -22,6 +22,7 @@
         
         [self addSubview:self.webView];
         [self addSubview:self.progressView];
+        [self addScriptMessageNames];
         
         if (params[WebViewUrl]) {
             [self requestWithUrl:params[WebViewUrl]];

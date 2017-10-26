@@ -1,6 +1,6 @@
 {
   "name": "NXWebViewKit",
-  "version": "2",
+  "version": "7",
   "summary": "A short description of NXWebViewKit.",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/NXTeamKit/NXWebViewKit",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/NXTeamKit/NXWebViewKit.git",
-    "tag": "2"
+    "tag": "7"
   },
   "platforms": {
     "ios": "8.0"

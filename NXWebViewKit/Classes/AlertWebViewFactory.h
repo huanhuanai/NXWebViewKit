@@ -6,8 +6,9 @@
 //
 //
 
-#import "WebViewFactory.h"
+#import <Foundation/Foundation.h>
+#import "WebViewFactoryProtocol.h"
 
-@interface AlertWebViewFactory : WebViewFactory
+@interface AlertWebViewFactory : NSObject<WebViewFactoryProtocol>
 
 @end

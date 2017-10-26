@@ -6,8 +6,9 @@
 //
 //
 
-#import "WebViewFactory.h"
+#import <Foundation/Foundation.h>
+#import "WebViewFactoryProtocol.h"
 
-@interface LoadingWebViewFactory : WebViewFactory
+@interface LoadingWebViewFactory : NSObject <WebViewFactoryProtocol>
 
 @end

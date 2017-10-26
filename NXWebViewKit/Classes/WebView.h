@@ -28,6 +28,7 @@ FOUNDATION_EXTERN NSString * const WebViewScriptMessageNames; //JS交互的Key�
 
 - (instancetype)initWithFrame:(CGRect)frame params:(NSDictionary *)params;
 - (void)requestWithUrl:(NSString *)url;
+- (void)addScriptMessageNames;
 
 @end
 

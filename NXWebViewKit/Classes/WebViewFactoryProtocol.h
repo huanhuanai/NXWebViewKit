@@ -1,15 +1,15 @@
 //
-//  WebViewFactory.h
+//  WebViewFactoryProtocol.h
 //  Pods
 //
-//  Created by kepuna on 2017/10/23.
+//  Created by kepuna on 2017/10/26.
 //
 //
 
 #import <Foundation/Foundation.h>
 #import "WebView.h"
 
-@interface WebViewFactory : NSObject
+@protocol WebViewFactoryProtocol <NSObject>
 
 + (WebView *)createWebViewWithFrame:(CGRect)frame params:(NSDictionary *)params;
 

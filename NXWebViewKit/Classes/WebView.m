@@ -29,10 +29,8 @@ NSString * const WebViewScriptMessageNames = @"WebViewScriptMessageNames";
     if (self = [super initWithFrame:frame]) {
         self.webViewFrame = CGRectMake(0, 0, frame.size.width, frame.size.height);
         self.params = params;
-        
         if (params[WebViewScriptMessageNames]) {
            self.scriptMessageNames = params[WebViewScriptMessageNames];
-           [self p_addScriptMessageNames];
         }
     }
     return self;
@@ -52,19 +50,20 @@ NSString * const WebViewScriptMessageNames = @"WebViewScriptMessageNames";
 }
 
 #pragma mark - privete method
-- (void)p_addScriptMessageNames{
-    
-    for (NSString *name in self.scriptMessageNames) {
-        [self.webView.configuration.userContentController addScriptMessageHandler:self name:name];
+- (void)addScriptMessageNames{
+    if (self.scriptMessageNames) {
+        for (NSString *name in self.scriptMessageNames) {
+            [self.webView.configuration.userContentController addScriptMessageHandler:self name:name];
+        }
     }
 }
 
-- (void)p_removeScriptMessageNames{
-    
-    for (NSString *name in self.scriptMessageNames) {
-        [self.webView.configuration.userContentController removeScriptMessageHandlerForName:name];
+- (void)removeScriptMessageNames{
+    if (self.scriptMessageNames) {
+        for (NSString *name in self.scriptMessageNames) {
+            [self.webView.configuration.userContentController removeScriptMessageHandlerForName:name];
+        }
     }
-    
 }
 
 #pragma mark - getters
@@ -81,7 +80,7 @@ NSString * const WebViewScriptMessageNames = @"WebViewScriptMessageNames";
 
 - (void)dealloc {
     [self.webView setNavigationDelegate:nil];
-    [self p_removeScriptMessageNames];
+    [self removeScriptMessageNames];
 }
 
 

@@ -16,6 +16,7 @@
     if (self = [super initWithFrame:frame params:params]) {
         
         [self addSubview:self.webView];
+        [self addScriptMessageNames];
         if (params[WebViewUrl]) {
             [self requestWithUrl:params[WebViewUrl]];
         }
