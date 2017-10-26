@@ -26,7 +26,6 @@
         if (params[WebViewUrl]) {
             [self requestWithUrl:params[WebViewUrl]];
         }
-
         [self.webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
     }
     return self;

@@ -17,7 +17,7 @@ FOUNDATION_EXTERN NSString * const WebViewBottomTip;
 FOUNDATION_EXTERN NSString * const WebViewTopTip;
 FOUNDATION_EXTERN NSString * const WebViewTopTipViewBackgroundColor;
 FOUNDATION_EXTERN NSString * const WebViewBottomBtnBackgroundColor;
-FOUNDATION_EXTERN NSString * const WebViewInteractionNames; //JS交互的Key（传入数组）
+FOUNDATION_EXTERN NSString * const WebViewScriptMessageNames; //JS交互的Key（传入数组）
 
 @interface WebView : UIView <WKNavigationDelegate>
 

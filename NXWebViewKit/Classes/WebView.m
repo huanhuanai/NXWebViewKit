@@ -14,11 +14,11 @@ NSString * const WebViewTopTip = @"WebViewTopTip";
 NSString * const WebViewBottomTip = @"WebViewBottomTip";
 NSString * const WebViewTopTipViewBackgroundColor = @"WebViewTopTipViewBackgroundColor";
 NSString * const WebViewBottomBtnBackgroundColor = @"WebViewBottomBtnBackgroundColor";
-NSString * const WebViewInteractionNames = @"WebViewInteractionNames";
+NSString * const WebViewScriptMessageNames = @"WebViewScriptMessageNames";
 
 @interface WebView ()<WKScriptMessageHandler>
 
-@property (nonatomic, copy) NSArray *interactionNames;
+@property (nonatomic, copy) NSArray *scriptMessageNames;
 
 @end
 
@@ -30,8 +30,8 @@ NSString * const WebViewInteractionNames = @"WebViewInteractionNames";
         self.webViewFrame = CGRectMake(0, 0, frame.size.width, frame.size.height);
         self.params = params;
         
-        if (params[WebViewInteractionNames]) {
-           self.interactionNames = params[WebViewInteractionNames];
+        if (params[WebViewScriptMessageNames]) {
+           self.scriptMessageNames = params[WebViewScriptMessageNames];
            [self p_addScriptMessageNames];
         }
     }
@@ -54,14 +54,14 @@ NSString * const WebViewInteractionNames = @"WebViewInteractionNames";
 #pragma mark - privete method
 - (void)p_addScriptMessageNames{
     
-    for (NSString *name in self.interactionNames) {
+    for (NSString *name in self.scriptMessageNames) {
         [self.webView.configuration.userContentController addScriptMessageHandler:self name:name];
     }
 }
 
 - (void)p_removeScriptMessageNames{
     
-    for (NSString *name in self.interactionNames) {
+    for (NSString *name in self.scriptMessageNames) {
         [self.webView.configuration.userContentController removeScriptMessageHandlerForName:name];
     }
     
