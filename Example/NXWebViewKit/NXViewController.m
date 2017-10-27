@@ -7,15 +7,7 @@
 //
 
 #import "NXViewController.h"
-#import "LoadingWebViewFactory.h"
-#import "AlertWebViewFactory.h"
-#import "ProgressWebViewFactory.h"
-
-@interface NXViewController ()
-
-@property (nonatomic, strong) WebView *webView;
-
-@end
+#import "NXWebViewController.h"
 
 @implementation NXViewController
 
@@ -24,18 +16,15 @@
     [super viewDidLoad];
     
     
-    NSMutableDictionary *params = [NSMutableDictionary dictionary];
-    [params setObject:@"http://ncfh5.limingjie.top/index.php?r=view/detail&mid=4412" forKey:WebViewUrl];
-    [params setObject:@"关于" forKey:WebViewTopTip];
-    [params setObject:@"我知道了" forKey:WebViewBottomTip];
-    
-    CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-    WebView *webView = [AlertWebViewFactory createWebViewWithFrame:frame params:params.copy];
-    [webView addScriptMessageNames:@[@"jumpToUserIndex",@"topicList"]];
-    [self.view addSubview:webView];
+   
 	// Do any additional setup after loading the view, typically from a nib.
 }
 
+- (IBAction)btnClick:(UIButton *)sender {
+    
+    NXWebViewController *webView = [[NXWebViewController alloc]init];
+    [self.navigationController pushViewController:webView animated:YES];
+}
 
 
 - (void)didReceiveMemoryWarning

@@ -64,6 +64,7 @@
 }
 
 - (void)dealloc {
+    NSLog(@"--++++ dddddd");
     [self.webView removeObserver:self forKeyPath:@"estimatedProgress"];
 }
 

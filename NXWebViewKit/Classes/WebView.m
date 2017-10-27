@@ -7,6 +7,7 @@
 //
 
 #import "WebView.h"
+#import "WeakScriptMessageDelegate.h"
 
 NSString * const WebViewUrl = @"WebViewUrl";
 NSString * const WebViewTopTip = @"WebViewTopTip";
@@ -46,7 +47,7 @@ NSString * const WebViewBottomBtnBackgroundColor = @"WebViewBottomBtnBackgroundC
     self.scriptMessageNames = names;
     if (names) {
         for (NSString *name in names) {
-            [self.webView.configuration.userContentController addScriptMessageHandler:self name:name];
+            [self.webView.configuration.userContentController addScriptMessageHandler:[[WeakScriptMessageDelegate alloc] initWithDelegate:self] name:name];
         }
     }
 }
@@ -76,7 +77,6 @@ NSString * const WebViewBottomBtnBackgroundColor = @"WebViewBottomBtnBackgroundC
 }
 
 - (void)dealloc {
-    NSLog(@"#### %s 销毁 ####",__func__);
     [self.webView setNavigationDelegate:nil];
     [self removeScriptMessageNames];
 }
