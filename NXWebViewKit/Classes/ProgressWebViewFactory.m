@@ -11,7 +11,7 @@
 
 @implementation ProgressWebViewFactory
 
-+ (WebView *)createWebViewWithFrame:(CGRect)frame params:(NSDictionary *)params {
++ (NXWebView *)createWebViewWithFrame:(CGRect)frame params:(NSDictionary *)params {
     return [[ProgressWebView alloc] initWithFrame:frame params:params];
 }
 

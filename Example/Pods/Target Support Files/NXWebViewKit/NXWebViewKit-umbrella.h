@@ -14,12 +14,12 @@
 #import "AlertWebViewFactory.h"
 #import "LoadingWebView.h"
 #import "LoadingWebViewFactory.h"
+#import "NXWebView.h"
 #import "ProgressWebView.h"
 #import "ProgressWebViewFactory.h"
 #import "UIImage+NXAdd.h"
 #import "UIView+NXAdd.h"
-#import "WebView.h"
-#import "WebViewFactory.h"
+#import "WeakScriptMessageDelegate.h"
 #import "WebViewFactoryProtocol.h"
 
 FOUNDATION_EXPORT double NXWebViewKitVersionNumber;

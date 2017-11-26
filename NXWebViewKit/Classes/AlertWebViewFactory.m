@@ -11,7 +11,7 @@
 
 @implementation AlertWebViewFactory
 
-+ (WebView *)createWebViewWithFrame:(CGRect)frame params:(NSDictionary *)params {
++ (NXWebView *)createWebViewWithFrame:(CGRect)frame params:(NSDictionary *)params {
      return [[AlertWebView alloc] initWithFrame:frame params:params];
 }
 

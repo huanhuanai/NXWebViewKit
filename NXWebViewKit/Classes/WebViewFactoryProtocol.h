@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "WebView.h"
+#import "NXWebView.h"
 
 @protocol WebViewFactoryProtocol <NSObject>
 
-+ (WebView *)createWebViewWithFrame:(CGRect)frame params:(NSDictionary *)params;
++ (NXWebView *)createWebViewWithFrame:(CGRect)frame params:(NSDictionary *)params;
 
 @end

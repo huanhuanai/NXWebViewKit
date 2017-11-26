@@ -6,8 +6,8 @@
 //
 //
 
-#import "WebView.h"
+#import "NXWebView.h"
 
-@interface AlertWebView : WebView
+@interface AlertWebView : NXWebView
 
 @end

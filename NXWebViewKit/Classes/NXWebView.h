@@ -1,15 +1,15 @@
 //
-//  WebView.h
+//  NXWebView.h
 //  Pods
 //
-//  Created by kepuna on 2017/10/23.
+//  Created by kepuna on 2017/11/26.
 //
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 #import <WebKit/WebKit.h>
 
-@protocol WebViewDelegate;
+@protocol NXWebViewDelegate;
 
 FOUNDATION_EXTERN NSString * const WebViewUrl;
 FOUNDATION_EXTERN NSString * const WebViewTopTip;
@@ -18,17 +18,17 @@ FOUNDATION_EXTERN NSString * const WebViewTopTip;
 FOUNDATION_EXTERN NSString * const WebViewTopTipViewBackgroundColor;
 FOUNDATION_EXTERN NSString * const WebViewBottomBtnBackgroundColor;
 
-@interface WebView : UIView <WKNavigationDelegate>
+@interface NXWebView : UIView <WKNavigationDelegate>
 
 @property (nonatomic, strong, readonly) WKWebView *webView;
 @property (nonatomic, assign, readonly) CGRect webViewFrame;
 @property (nonatomic, strong, readonly) NSURLRequest *urlRequest;
-@property (nonatomic, weak) id<WebViewDelegate> delegate;
+@property (nonatomic, weak) id<NXWebViewDelegate> delegate;
 
 
 /**
  webView初始化方法
-
+ 
  @param frame frame
  @param params 传入所需参数
  @return webview实例
@@ -47,16 +47,16 @@ FOUNDATION_EXTERN NSString * const WebViewBottomBtnBackgroundColor;
 
 @end
 
-@protocol WebViewDelegate <NSObject>
+@protocol NXWebViewDelegate <NSObject>
 
 
 /**
  JS交互的代理方法
-
+ 
  @param webView webView
  @param body js交互返回的数据
  @param name js交互的name
  */
-- (void)webView:(WebView *)webView didReceiveScriptMessageBody:(id)body scriptMessageName:(NSString *)name;
+- (void)webView:(NXWebView *)webView didReceiveScriptMessageBody:(id)body scriptMessageName:(NSString *)name;
 
 @end

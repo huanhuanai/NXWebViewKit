@@ -6,8 +6,8 @@
 //
 //
 
-#import "WebView.h"
+#import "NXWebView.h"
 
-@interface ProgressWebView : WebView
+@interface ProgressWebView : NXWebView
 
 @end

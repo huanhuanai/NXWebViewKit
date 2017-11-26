@@ -13,7 +13,7 @@
 
 @interface NXWebViewController ()
 
-@property (nonatomic, strong) WebView *webView;
+@property (nonatomic, strong) NXWebView *webView;
 
 @end
 
@@ -28,7 +28,7 @@
     [params setObject:@"我知道了" forKey:WebViewBottomTip];
     
     CGRect frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
-    WebView *webView = [AlertWebViewFactory createWebViewWithFrame:frame params:params.copy];
+    NXWebView *webView = [AlertWebViewFactory createWebViewWithFrame:frame params:params.copy];
     [webView addScriptMessageNames:@[@"jumpToUserIndex",@"topicList"]];
     [self.view addSubview:webView];
 }

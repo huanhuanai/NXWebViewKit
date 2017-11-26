@@ -1,12 +1,13 @@
 //
-//  WebView.m
+//  NXWebView.m
 //  Pods
 //
-//  Created by kepuna on 2017/10/23.
+//  Created by kepuna on 2017/11/26.
 //
 //
 
-#import "WebView.h"
+#import "NXWebView.h"
+
 #import "WeakScriptMessageDelegate.h"
 
 NSString * const WebViewUrl = @"WebViewUrl";
@@ -15,7 +16,7 @@ NSString * const WebViewBottomTip = @"WebViewBottomTip";
 NSString * const WebViewTopTipViewBackgroundColor = @"WebViewTopTipViewBackgroundColor";
 NSString * const WebViewBottomBtnBackgroundColor = @"WebViewBottomBtnBackgroundColor";
 
-@interface WebView ()<WKScriptMessageHandler>
+@interface NXWebView ()<WKScriptMessageHandler>
 
 @property (nonatomic, copy) NSArray *scriptMessageNames;
 @property (nonatomic, strong, readwrite) WKWebView *webView;
@@ -24,9 +25,9 @@ NSString * const WebViewBottomBtnBackgroundColor = @"WebViewBottomBtnBackgroundC
 
 @end
 
-@implementation WebView
+@implementation NXWebView
 
-#pragma  init config 
+#pragma  init config
 - (instancetype)initWithFrame:(CGRect)frame params:(NSDictionary *)params {
     if (self = [super initWithFrame:frame]) {
         self.webViewFrame = CGRectMake(0, 0, frame.size.width, frame.size.height);
@@ -84,3 +85,4 @@ NSString * const WebViewBottomBtnBackgroundColor = @"WebViewBottomBtnBackgroundC
 
 
 @end
+
